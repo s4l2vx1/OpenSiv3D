@@ -42,7 +42,7 @@ namespace s3d
 		extern char* siv3dGetXMLHTTPRequestResponseHeaders(int32 id);
 
 		__attribute__((import_name("siv3dSendXMLHTTPRequest")))
-		extern void siv3dSendXMLHTTPRequest(int32 id, const char* data);
+		extern void siv3dSendXMLHTTPRequest(int32 id, const char* data, uint32 size);
 
 		__attribute__((import_name("siv3dOpenXMLHTTPRequest")))
 		extern void siv3dOpenXMLHTTPRequest(int32 id, const char* method, const char* url);
@@ -227,11 +227,11 @@ namespace s3d
 
 		if (body)
 		{
-			detail::siv3dSendXMLHTTPRequest(m_wgetHandle, body->data());
+			detail::siv3dSendXMLHTTPRequest(m_wgetHandle, body->data(), body->size());
 		}
 		else
 		{
-			detail::siv3dSendXMLHTTPRequest(m_wgetHandle, nullptr);
+			detail::siv3dSendXMLHTTPRequest(m_wgetHandle, nullptr, 0);
 		}
 	}
 

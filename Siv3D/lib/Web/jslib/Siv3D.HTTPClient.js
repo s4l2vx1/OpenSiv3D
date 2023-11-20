@@ -72,7 +72,7 @@ mergeInto(LibraryManager.library, {
     siv3dGetXMLHTTPRequestResponseHeaders__sig: "ii",
     siv3dGetXMLHTTPRequestResponseHeaders__deps: [ "$siv3dXMLHTTPRequestList" ],
 
-    siv3dSendXMLHTTPRequest: function(id, dataPtr) {
+    siv3dSendXMLHTTPRequest: function(id, dataPtr, dataSize) {
         {{{ runtimeKeepalivePush() }}}
 
         siv3dXMLHTTPRequestList[id].addEventListener("load", function() {
@@ -82,10 +82,10 @@ mergeInto(LibraryManager.library, {
             {{{ runtimeKeepalivePop() }}}
         });
 
-        const data = dataPtr ? UTF8ToString(dataPtr) : null;
+        const data = dataPtr ? new Uint8Array(HEAPU8.buffer, dataPtr, dataSize) : null;
         siv3dXMLHTTPRequestList[id].send(data);
     },
-    siv3dSendXMLHTTPRequest__sig: "vii",
+    siv3dSendXMLHTTPRequest__sig: "viii",
     siv3dSendXMLHTTPRequest__deps: [ "$siv3dXMLHTTPRequestList" ],
 
     siv3dOpenXMLHTTPRequest: function(id, methodPtr, urlPtr) {

@@ -95,10 +95,6 @@ mergeInto(LibraryManager.library, {
         
         http.open(method, url, true);
         http.responseType = "arraybuffer";
-
-        if (method == "POST") {
-            http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        }
     },
     siv3dOpenXMLHTTPRequest__sig: "viii",
     siv3dOpenXMLHTTPRequest__deps: [ "$siv3dXMLHTTPRequestList" ],

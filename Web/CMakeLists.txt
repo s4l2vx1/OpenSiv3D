@@ -454,6 +454,7 @@ set(SIV3D_INTERNAL_SOURCES
   ../Siv3D/src/Siv3D/NinePatch/NinePatchDetail.cpp
   ../Siv3D/src/Siv3D/NinePatch/SivNinePatch.cpp
   ../Siv3D/src/Siv3D/None/SivNone.cpp
+  ../Siv3D/src/Siv3D/OpenAI/SivOpenAI.cpp
   ../Siv3D/src/Siv3D/OpenCV_Bridge/SivOpenCV_Bridge.cpp
   ../Siv3D/src/Siv3D/OrientedBox/SivOrientedBox.cpp
   ../Siv3D/src/Siv3D/Parse/SivParse.cpp

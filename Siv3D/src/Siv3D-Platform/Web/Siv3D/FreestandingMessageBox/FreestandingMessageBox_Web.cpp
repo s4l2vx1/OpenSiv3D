@@ -25,7 +25,7 @@ namespace s3d
 	{
 		void ShowInfo(const StringView text)
 		{
-			System::MessageBoxOK(U"Application Error", text, MessageBoxStyle::Info);
+			System::MessageBoxOK(U"Siv3D Engine", text, MessageBoxStyle::Info);
 		}
 
 		void ShowError(const StringView text)

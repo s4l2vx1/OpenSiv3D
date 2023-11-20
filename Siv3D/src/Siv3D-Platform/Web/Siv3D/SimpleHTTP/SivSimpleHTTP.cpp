@@ -119,15 +119,10 @@ namespace s3d
 
 			String temporaryFile{U"/tmp/http_get_response"};
 
-			auto httpTask = std::make_unique<AsyncHTTPTaskDetail>(U"GET", origin + url, HashTable<String, String>{}, temporaryFile);
-
-			for (auto&& [key, value] : headers)
-			{
-				httpTask->setRequestHeader(key, value);
-			}
+			auto httpTask = std::make_unique<AsyncHTTPTaskDetail>(U"GET", origin + url, headers, temporaryFile);
 
 			httpTask->send(none);
-			
+
 			auto httpFuture = httpTask->CreateAsyncTask();
 
 			if (auto httpResponse = Platform::Web::System::AwaitAsyncTask(httpFuture))
@@ -202,15 +197,10 @@ namespace s3d
 
 			String temporaryFile{U"/tmp/http_post_response"};
 
-			auto httpTask = std::make_unique<AsyncHTTPTaskDetail>(U"POST", origin + url, HashTable<String, String>{}, temporaryFile);
-
-			for (auto&& [key, value] : headers)
-			{
-				httpTask->setRequestHeader(key, value);
-			}
+			auto httpTask = std::make_unique<AsyncHTTPTaskDetail>(U"POST", origin + url, headers, temporaryFile);
 
 			httpTask->send(std::string_view(static_cast<const char*>(src), size));
-			
+
 			auto httpFuture = httpTask->CreateAsyncTask();
 
 			if (auto httpResponse = Platform::Web::System::AwaitAsyncTask(httpFuture))

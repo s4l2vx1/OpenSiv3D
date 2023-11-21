@@ -44,22 +44,22 @@ mergeInto(LibraryManager.library, {
 
             if (e.inputType == "insertText") {
                 if (e.data) {
-                    for (var i = 0; i < e.data.length; i++) {
-                        const codePoint = e.data.charCodeAt(i);
+                    for (const char of e.data) {
+                        const codePoint = char.codePointAt(0);
                         callbackFn(codePoint);
                     }
                 }
             } else if (e.inputType == "insertFromPaste") {
                 if (e.data) {
-                    for (var i = 0; i < e.data.length; i++) {
-                        const codePoint = e.data.charCodeAt(i);
+                    for (const char of e.data) {
+                        const codePoint = char.codePointAt(0);
                         callbackFn(codePoint);
                     }
                 } else {
                     navigator.clipboard.readText().then(
                         data => {
-                            for (var i = 0; i < data.length; i++) {
-                                const codePoint = data.charCodeAt(i);
+                            for (const char of data) {
+                                const codePoint = char.codePointAt(0);
                                 callbackFn(codePoint);
                             }
                         }
@@ -91,8 +91,8 @@ mergeInto(LibraryManager.library, {
         siv3dTextInputElement.addEventListener('compositionend', function (e) {
             composing = false;
             siv3dTextInputCompositionRange = null;
-            for (var i = 0; i < e.data.length; i++) {
-                const codePoint = e.data.charCodeAt(i);
+            for (const char of e.data) {
+                const codePoint = char.codePointAt(0);
                 callbackFn(codePoint);
             }
         });
@@ -156,7 +156,7 @@ mergeInto(LibraryManager.library, {
     siv3dSetTextInputText: function(ptr) {
         /** @type { string } */
         const newText = UTF8ToString(ptr);
-        siv3dTextInputElement.textContent = " ".repeat(newText.length);
+        siv3dTextInputElement.textContent = " ".repeat([...newText].length);
     },
     siv3dSetTextInputText__sig: "vi",
     siv3dSetTextInputText__proxy: "sync",

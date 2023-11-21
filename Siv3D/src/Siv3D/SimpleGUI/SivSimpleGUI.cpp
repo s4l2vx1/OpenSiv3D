@@ -1678,6 +1678,28 @@ namespace s3d
 									textCursorLineX, textCursorLineY0, textCursorLineY1,
 									editingText, editingTextPos, maxScroll, enabled);
 	
+		# if SIV3D_PLATFORM(WEB)
+
+			Platform::Web::TextInput::SetFocusToTextInput(text.active);		
+				
+			if (text.active && not editingText)
+			{
+				if (text.lastCursorPos != text.cursorPos)
+				{
+					Platform::Web::TextInput::SyncronizeText(text.text);
+					Platform::Web::TextInput::SetCursorIndex(text.cursorPos);		
+				}
+				else if (auto currentCursorPos = Platform::Web::TextInput::GetCursorIndex(); text.lastCursorPos != currentCursorPos)
+				{
+					text.cursorPos = currentCursorPos;
+					text.cursorStopwatch.restart();
+				}
+
+				text.lastCursorPos = text.cursorPos;
+			}
+
+		# endif
+
 			return text.textChanged;
 		}
 

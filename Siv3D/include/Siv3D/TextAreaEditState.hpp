@@ -58,6 +58,12 @@ namespace s3d
 
 		Array<ClipInfo> clipInfos;
 
+	# if SIV3D_PLATFORM(WEB)
+
+		size_t lastCursorPos = 0;
+
+	# endif
+
 		SIV3D_NODISCARD_CXX20
 		TextAreaEditState() = default;
 

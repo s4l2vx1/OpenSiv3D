@@ -21,6 +21,9 @@
 # include <Siv3D/HTTPProgress.hpp>
 # include <Siv3D/BinaryWriter.hpp>
 # include <Siv3D/AsyncHTTPTask.hpp>
+# include <Siv3D/MemoryWriter.hpp>
+# include <Siv3D/HashTable.hpp>
+# include <Siv3D/Blob.hpp>
 
 namespace s3d
 {
@@ -35,7 +38,13 @@ namespace s3d
 		AsyncHTTPTaskDetail(URLView url, const HashTable<String, String>& headers, FilePathView path);
 
 		SIV3D_NODISCARD_CXX20
+		AsyncHTTPTaskDetail(URLView url, const HashTable<String, String>& headers);
+
+		SIV3D_NODISCARD_CXX20
 		AsyncHTTPTaskDetail(StringView method, URLView url, const HashTable<String, String>& headers, FilePathView path);
+
+		SIV3D_NODISCARD_CXX20
+		AsyncHTTPTaskDetail(StringView method, URLView url, const HashTable<String, String>& headers);
 
 		~AsyncHTTPTaskDetail();
 
@@ -53,6 +62,19 @@ namespace s3d
 
 		[[nodiscard]]
 		const HTTPResponse& getResponse();
+
+		[[nodiscard]]
+		bool isFile() const;
+
+		[[nodiscard]]
+		const FilePath& getFilePath() const;
+
+		[[nodiscard]]
+		const Blob& getBlob() const;
+
+		void writeRequestsToMemory();
+
+		void removeFile();
 
 		void resolveResponse(const HTTPResponse&);
 
@@ -87,10 +109,14 @@ namespace s3d
 		int m_wgetHandle = 0;
 		//
 		////
-
-		String m_method;
 		
 		URL m_url;
+
+		FilePath m_path;
+
+		FilePath m_tempFilePath;
+
+		MemoryWriter m_memory;
 
 		AsyncTask<HTTPResponse> m_task;
 

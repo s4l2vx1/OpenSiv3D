@@ -1906,6 +1906,8 @@
 
 # include <Siv3D/Browser.hpp>
 
+# include <Siv3D/IndexedDB.hpp>
+
 //////////////////////////////////////////////////
 //
 //	名前空間 | Name Space

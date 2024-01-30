@@ -127,6 +127,7 @@ set(SIV3D_INTERNAL_SOURCES
   ../Siv3D/src/Siv3D-Platform/Web/Siv3D/DragDrop/CDragDrop.cpp
   ../Siv3D/src/Siv3D-Platform/Web/Siv3D/FileSystem/SivFileSystem_Web.cpp
   ../Siv3D/src/Siv3D-Platform/Web/Siv3D/FreestandingMessageBox/FreestandingMessageBox_Web.cpp
+  ../Siv3D/src/Siv3D-Platform/Web/Siv3D/IndexedDB/IndexedDB.cpp
   ../Siv3D/src/Siv3D-Platform/Web/Siv3D/LicenseManager/CLicenseManager.cpp
   ../Siv3D/src/Siv3D-Platform/Web/Siv3D/LicenseManager/LicenseManagerFactory.cpp
   ../Siv3D/src/Siv3D-Platform/Web/Siv3D/LicenseManager/SivLicenseManager.cpp
@@ -1502,6 +1503,7 @@ set(SIV3D_JSLIBS
   ${PROJECT_SOURCE_DIR}/../Siv3D/lib/Web/jslib/Siv3D.GLFW.js
   ${PROJECT_SOURCE_DIR}/../Siv3D/lib/Web/jslib/Siv3D.HTTPClient.js
   ${PROJECT_SOURCE_DIR}/../Siv3D/lib/Web/jslib/Siv3D.ImageDecode.js
+  ${PROJECT_SOURCE_DIR}/../Siv3D/lib/Web/jslib/Siv3D.IndexedDB.js
   ${PROJECT_SOURCE_DIR}/../Siv3D/lib/Web/jslib/Siv3D.KeyBindings.js
   ${PROJECT_SOURCE_DIR}/../Siv3D/lib/Web/jslib/Siv3D.MultiTouch.js
   ${PROJECT_SOURCE_DIR}/../Siv3D/lib/Web/jslib/Siv3D.Notification.js
